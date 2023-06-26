@@ -1,17 +1,15 @@
 package com.Online.Cinema.repository;
 
 import com.Online.Cinema.entity.User;
-import com.Online.Cinema.entity.enums.ERole;
-import org.springframework.data.repository.Repository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
+import java.util.List;
 import java.util.Optional;
 
 @org.springframework.stereotype.Repository
-public interface UserDao extends Repository<User, Long> {
+public interface UserDao extends JpaRepository<User, Long> {
 
-    Optional<User> findAll();
-    User findById(Long id);
+    List<User> findAll();
+    Optional<User> findById(Long id);
     Optional<User> findByLogin(String login);
-    Optional<User> findByLoginAndRole(String login, ERole role);
-    void save(User user);
-}
+    }

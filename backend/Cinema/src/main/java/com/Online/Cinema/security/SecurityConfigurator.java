@@ -27,9 +27,8 @@ public class SecurityConfigurator {
                 .csrf(AbstractHttpConfigurer::disable)
                 .cors(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/film/" +
-                                "**").permitAll()
-                        .anyRequest().authenticated()
+                        .requestMatchers("/profile/**").authenticated()
+                        .anyRequest().permitAll()
                 )
                 .sessionManagement(sess -> sess.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .httpBasic(Customizer.withDefaults())

@@ -2,7 +2,9 @@ package com.Online.Cinema.entity;
 
 import com.Online.Cinema.entity.enums.ERole;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -10,6 +12,8 @@ import java.util.Set;
 @Data
 @Entity(name = "user")
 @Table(schema = "public")
+@AllArgsConstructor
+@NoArgsConstructor
 public class User {
 
     @Id
@@ -27,16 +31,10 @@ public class User {
             joinColumns = @JoinColumn(name = "user_id"))
     private Set<ERole> role = new HashSet<ERole>();
 
-    @OneToMany(mappedBy = "user")
-    private Set<Film> liked_film = new HashSet<Film>();
-
-    public User(long id, String email, String login, String password, ERole role) {
-        this.id = id;
-        this.email = email;
-        this.login = login;
-        this.password = password;
-        this.role.add(role);
-    }
+    @ElementCollection(targetClass = Film.class)
+    @CollectionTable(name = "user_followed_film",
+            joinColumns = @JoinColumn(name = "user_id"))
+    private Set<Film> films = new HashSet<>();
 
     public void addRole(ERole role){
         this.role.add(role);
