@@ -6,8 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 @Data
 @Entity(name = "film")
@@ -21,9 +20,20 @@ public class Film {
     @Column
     private String name;
     @Column
-    private String description;
+    private Date releaseDate;
     @Column
-    private String path;
+    private String studio;
+
+    @OneToMany
+    private List<Video> videos = new ArrayList<>();
+
+    @OneToMany
+    private List<Image> image = new ArrayList<>();
+
+    @Column
+    private String smallDescription;
+    @Column
+    private String description;
 
     @ElementCollection(targetClass = ECategories.class)
     @CollectionTable(name = "film_categories",

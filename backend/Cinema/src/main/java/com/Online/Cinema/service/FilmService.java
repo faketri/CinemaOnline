@@ -25,7 +25,12 @@ public class FilmService {
         return filmDao.findByName(name);
     }
 
-    public void createNewFilm(Film film){
+    public void save(Film film){
         filmDao.save(film);
     }
+
+
+//    public List<Film> findTopFilmsForUserRating(){
+//        return filmDao.findTopFilmsForUserRating();
+//    }
 }

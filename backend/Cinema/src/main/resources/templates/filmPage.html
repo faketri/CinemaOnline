@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--STYLE-->
+    <link rel="stylesheet" href="../css/bootstrap.css">
+
+    <!--FONTS-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Belanosima&display=swap" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+    <style>
+        body{
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            font-size: 24px;
+        }
+    </style>
+
+    <title th:text="${film.getName()}">CinemaOnline</title>
+</head>
+<body style="background-color: grey;">
+
+    <header class="d-flex container justify-content-between align-items-center" style="height: 90px; z-index: 1;">
+        <a class="logo" href="/"><img src="../assets/logo.svg" alt="Logo"/></a>
+        <a href=""><img src="../assets/ProfileButton.svg" alt="" srcset=""></a>
+    </header>
+
+    <section class="film-description container">
+
+        <div class="mb-4" style="overflow: auto;">
+            <img class="col-12 col-md-8 col-sm-8 col-lg-8 me-0 me-sm-3" th:src="|/image/${film.getId()}/1|" style="float: left; margin-right: 10px;">
+            <p th:utext="${film.getDescription()}"></p>
+        </div>
+
+        <video id="player" playsinline controls th:data-poster="|/image/${film.getId()}/0|"
+        class="col-12 col-md-8 col-sm-12 col-lg-8" style="margin: 0 auto;">
+            <source th:src="|/video/${film.getId()}/0|" type="video/mp4" />
+
+            <!-- Captions are optional -->
+            <track kind="captions" label="English captions" src="/path/to/captions.vtt" srclang="en" default />
+        </video>
+    </section>
+
+    <script src="../js/bootstrap.js"></script>
+</body>
+</html>

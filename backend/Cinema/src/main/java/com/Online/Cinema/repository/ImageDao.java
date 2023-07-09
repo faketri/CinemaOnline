@@ -1,6 +1,6 @@
 package com.Online.Cinema.repository;
 
-import com.Online.Cinema.entity.Film;
+import com.Online.Cinema.entity.Image;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -8,9 +8,8 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public interface FilmDao extends JpaRepository<Film, Long> {
+public interface ImageDao extends JpaRepository<Image, Long> {
 
-    List<Film> findAll();
-    Optional<Film> findById(Long id);
-    Optional<Film> findByName(String name);
+    List<Image> findByFilmId(Long filmId);
+    Optional<Image> findById(Long id);
 }

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--STYLE-->
+    <link rel="stylesheet" href="../css/bootstrap.css">
+
+    <!--FONTS-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Belanosima&display=swap" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+    <style>
+        body{
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            font-size: 24px;
+        }
+    </style>
+
+    <title>CinemaOnline</title>
+</head>
+<body style="background-color: grey;">
+
+    <header class="d-flex container justify-content-between align-items-center" style="height: 90px; z-index: 1;">
+        <img class="logo" src="../../assets/logo.svg" alt="Logo">
+        <a href=""><img src="../../assets/ProfileButton.svg" alt="" srcset=""></a>
+    </header>
+
+    <section class="film-description container">
+        <p style="color:white">
+            <img class="col-12 col-md-8 col-sm-8 col-lg-8 me-3" style="float:left"
+            src="../../assets/How-long-does-it-take-to-make-a-movie-trailer-explained.jpg" alt="">
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quas ratione quisquam, blanditiis minima itaque neque molestias, enim quae assumenda quaerat alias. Excepturi molestias vel rerum dolorem, inventore, perferendis qui corrupti, deserunt minima maiores nulla? Optio quae minus quasi quos a. Iste facere voluptatem incidunt fuga, exercitationem non id accusamus. Eveniet facilis recusandae eum fugiat quo aliquid repellendus, ipsam nostrum explicabo impedit corporis rem, voluptatibus voluptatum magnam iusto. Nesciunt, veritatis. Maiores provident est quidem aliquam impedit praesentium, eveniet voluptatibus voluptatum vero aspernatur? Illo veritatis soluta dicta quo maxime, numquam ad natus, delectus assumenda, vel eveniet ipsa culpa magni aliquid harum impedit. Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste laborum nulla ducimus labore consequuntur necessitatibus accusantium quaerat id ut alias, numquam similique excepturi corporis magni vero repellendus deleniti earum voluptatibus, assumenda atque fugit aliquid aut odio quo! Sapiente mollitia saepe dignissimos sint. Corrupti similique placeat dicta ipsam voluptate quaerat voluptatum magnam delectus. Nulla reiciendis provident, ipsa ipsum molestias quam velit quasi blanditiis reprehenderit odit nemo dignissimos sint. Nobis totam dolores ipsa repellat nulla et nesciunt suscipit praesentium, sit soluta ab earum delectus aut corrupti! Autem ratione eaque eum non provident recusandae modi pariatur minima, placeat esse, eos optio sint. Hic?]
+        </p>
+
+        <video id="player" playsinline controls data-poster="/path/to/poster.jpg"
+        class="col-12 col-md-8 col-sm-12 col-lg-8" style="margin: 0 auto;">
+            <source src="blob:https://www.youtube.com/3a16e8ff-0d02-49ee-9e91-0efd9f5abb3c" type="video/mp4" />
+            
+            <!-- Captions are optional -->
+            <track kind="captions" label="English captions" src="/path/to/captions.vtt" srclang="en" default />
+        </video>
+    </section>
+
+    <script src="./js/bootstrap.js"></script>
+</body>
+</html>
