@@ -19,9 +19,9 @@
 </head>
 <body>
 
-    <header class="header d-flex container justify-content-between align-items-center position-absolute" style="height: 90px; z-index: 1;">
+    <header th:if="${user == null}" class="header d-flex container justify-content-between align-items-center position-absolute" style="height: 90px; z-index: 1;">
         <img class="logo" src="../assets/logo.svg" alt="Logo" >
-        <a href="|/user/profile/${user.getId()}|"><img src="../assets/ProfileButton.svg" alt="" srcset=""></a>
+        <a th:href="@{/auth/login}"><img src="../assets/ProfileButton.svg" alt="" srcset=""></a>
     </header>
 
     <section class="slider">

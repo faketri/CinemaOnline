@@ -6,9 +6,13 @@ import com.Online.Cinema.entity.Video;
 import com.Online.Cinema.exeption.FilmNotFounded;
 import com.Online.Cinema.service.FilmService;
 import com.Online.Cinema.service.ImageService;
+import com.Online.Cinema.service.UserService;
 import com.Online.Cinema.service.VideoService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,6 +21,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.security.Principal;
 
 @Controller
 @RequiredArgsConstructor
@@ -24,13 +29,17 @@ public class FilmController {
     @Autowired
     private FilmService filmService;
     @Autowired
+    private UserService userService;
+    @Autowired
     private ImageService imageService;
     @Autowired
     private VideoService videoService;
 
     @GetMapping("/")
-    public String getAllFilm(Model model) throws IOException {
-
+    public String getAllFilm(Model model, Principal principal) throws IOException {
+        if(principal != null)
+            model.addAttribute("user", userService.findByLogin(principal.getName()));
+        System.out.println(SecurityContextHolder.getContext().getAuthentication().getName());
         model.addAttribute("films", filmService.findAll());
         return "index";
     }

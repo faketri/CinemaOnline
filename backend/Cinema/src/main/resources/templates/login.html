@@ -10,10 +10,10 @@
 <body>
 <!-- Форма регистрации -->
 <h2>Регистрация</h2>
-<form th:action="/auth/register" method="post">
+<form id="registerForm" th:action="@{/auth/register/}" method="post">
     <div>
-        <label for="username">Имя пользователя:</label>
-        <input type="text" id="username" name="username" required>
+        <label for="login">Имя пользователя:</label>
+        <input type="text" id="login" name="login" required>
     </div>
     <div>
         <label for="password">Пароль:</label>
@@ -30,10 +30,10 @@
 
 <!-- Форма входа -->
 <h2>Вход</h2>
-<form th:action="/auth/login" method="post">
+<form id="loginForm" th:action="@{/auth/login}" method="post">
     <div>
         <label for="loginUsername">Имя пользователя:</label>
-        <input type="text" id="loginUsername" name="username" required>
+        <input type="text" id="loginUsername" name="login" required>
     </div>
     <div>
         <label for="loginPassword">Пароль:</label>

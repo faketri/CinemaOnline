@@ -26,9 +26,9 @@
 </head>
 <body style="background-color: grey;">
 
-    <header class="d-flex container justify-content-between align-items-center" style="height: 90px; z-index: 1;">
+    <header th:if="${user != null}" class="d-flex container justify-content-between align-items-center" style="height: 90px; z-index: 1;">
         <a class="logo" href="/"><img src="../assets/logo.svg" alt="Logo"/></a>
-        <a href=""><img src="../assets/ProfileButton.svg" alt="" srcset=""></a>
+        <a th:href="@{/auth/login/}"><img src="../assets/ProfileButton.svg" alt="" srcset=""></a>
     </header>
 
     <section class="film-description container">
