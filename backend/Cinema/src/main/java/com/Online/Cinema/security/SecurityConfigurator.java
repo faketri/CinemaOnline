@@ -19,15 +19,14 @@ public class SecurityConfigurator {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        http.authorizeHttpRequests((requests) -> requests
-                        .requestMatchers("/user/**").authenticated()
-                        .anyRequest().permitAll()
-                ).formLogin((form) -> form
-                        .loginPage("/auth/login")
-                        .permitAll()
-                );
-
-        return http.build();
+        return http
+            .authorizeHttpRequests((requests) -> requests
+                    .requestMatchers("/user/**").authenticated()
+                    .anyRequest().permitAll()
+            ).formLogin((form) -> form
+                    .loginPage("/auth/login")
+                    .permitAll()
+            ).build();
     }
     @Bean
     public DaoAuthenticationProvider daoAuthenticationProvider() {
@@ -36,6 +35,7 @@ public class SecurityConfigurator {
         daoAuthenticationProvider.setPasswordEncoder(passwordEncoder());
         return daoAuthenticationProvider;
     }
+
     @Bean
     public BCryptPasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();

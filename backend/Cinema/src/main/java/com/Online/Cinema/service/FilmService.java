@@ -28,9 +28,4 @@ public class FilmService {
     public void save(Film film){
         filmDao.save(film);
     }
-
-
-//    public List<Film> findTopFilmsForUserRating(){
-//        return filmDao.findTopFilmsForUserRating();
-//    }
 }

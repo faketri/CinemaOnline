@@ -41,12 +41,6 @@ public class User implements UserDetails {
             joinColumns = @JoinColumn(name = "user_id"))
     private Set<Film> films = new HashSet<>();
 
-    public User(String login, String password, Collection<? extends GrantedAuthority> collect) {
-        this.login = login;
-        this.password = password;
-        this.role = (Set<ERole>) collect;
-    }
-
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return getRole();
