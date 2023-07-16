@@ -15,10 +15,8 @@ public class Video {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-
     @Column
     private String path;
-
     @ManyToOne()
     @JoinColumn(name="film_id")
     private Film film;

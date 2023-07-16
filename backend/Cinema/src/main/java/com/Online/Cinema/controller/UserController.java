@@ -13,10 +13,12 @@ public class UserController {
     private final UserService userService;
 
     @GetMapping(value="/user/profile/{id}")
-    public void getUserById(@PathVariable(value = "id") Long id){
+    public String  getUserById(@PathVariable(value = "id") Long id){
         System.out.println(userService.findById(id).orElseThrow(() ->
                 new UsernameNotFoundException(String.format("Not founded user by id - %d", id)))
         );
+
+        return "userProfile";
     }
 
     @PostMapping("/create")

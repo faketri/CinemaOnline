@@ -21,12 +21,17 @@ public class SecurityConfigurator {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         return http
             .authorizeHttpRequests((requests) -> requests
-                    .requestMatchers("/user/**").authenticated()
-                    .anyRequest().permitAll()
-            ).formLogin((form) -> form
-                    .loginPage("/auth/login")
+                    .requestMatchers("/**")
                     .permitAll()
-            ).build();
+            ).formLogin((form) -> form
+                    .loginPage("/auth/login/")
+                    .permitAll()
+            ).logout((log) -> log
+                        .logoutUrl("/auth/logout")
+                        .invalidateHttpSession(true)
+                        .deleteCookies("JSESSIONID")
+                        .permitAll())
+            .build();
     }
     @Bean
     public DaoAuthenticationProvider daoAuthenticationProvider() {

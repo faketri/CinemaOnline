@@ -4,72 +4,56 @@
     <meta charset="UTF-8">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+          integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../css/loginStyle.css">
 
     <title>Регистрация и вход в систему</title>
 </head>
 <body>
-<!-- Форма регистрации -->
-<h2>Регистрация</h2>
-<form id="registerForm" th:action="@{/auth/register/}" method="post">
-    <div>
-        <label for="login">Имя пользователя:</label>
-        <input type="text" id="login" name="login" required>
+<form id="loginForm" th:action="@{/auth/login/}" method="post">
+<!-- partial:index.partial.html -->
+<div class="box-form">
+    <div class="left">
+        <div class="overlay">
+            <h1>Hello World.</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                Curabitur et est sed felis aliquet sollicitudin</p>
+        </div>
     </div>
-    <div>
-        <label for="password">Пароль:</label>
-        <input type="password" id="password" name="password" required>
+
+
+    <div class="right">
+        <h5>Login</h5>
+        <p>Don't have an account? <a th:href="|/auth/login/|">Creat Your Account</a> it takes less than a minute</p>
+        <div class="inputs">
+            <input type="text" id="username" placeholder="user name" name="username">
+            <br>
+            <input type="password" placeholder="password" name="password">
+        </div>
+
+        <br><br>
+
+        <div class="remember-me--forget-password">
+            <!-- Angular -->
+            <label>
+                <input type="checkbox" name="item" checked />
+                <span class="text-checkbox">Remember me</span>
+            </label>
+            <p>forget password?</p>
+        </div>
+
+        <br>
+        <button type="submit">Login</button>
     </div>
-    <div>
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required>
-    </div>
-    <div>
-        <button type="submit">Зарегистрироваться</button>
-    </div>
+
+</div>
+<!-- partial -->
 </form>
 
-<!-- Форма входа -->
-<h2>Вход</h2>
-<form id="loginForm" th:action="@{/auth/login}" method="post">
-    <div>
-        <label for="loginUsername">Имя пользователя:</label>
-        <input type="text" id="loginUsername" name="login" required>
-    </div>
-    <div>
-        <label for="loginPassword">Пароль:</label>
-        <input type="password" id="loginPassword" name="password" required>
-    </div>
-    <div>
-        <button type="submit">Войти</button>
-    </div>
-</form>
+<a th:href="@{/auth/register/}">Register</a>
 
-<!-- JS-скрипт для переключения между формами -->
-<script>
-    // Получаем ссылки на формы
-    const registerForm = document.getElementById('registerForm');
-    const loginForm = document.getElementById('loginForm');
-
-    // Переключение на форму регистрации
-    function showRegisterForm() {
-        registerForm.style.display = 'block';
-        loginForm.style.display = 'none';
-    }
-
-    // Переключение на форму входа
-    function showLoginForm() {
-        registerForm.style.display = 'none';
-        loginForm.style.display = 'block';
-    }
-</script>
-
-<!-- Кнопки для переключения между формами -->
-<button onclick="showRegisterForm()">Зарегистрироваться</button>
-<button onclick="showLoginForm()">Войти</button>
-
-<!-- По умолчанию отображается форма регистрации -->
-<script>
-    showRegisterForm();
-</script>
 </body>
 </html>

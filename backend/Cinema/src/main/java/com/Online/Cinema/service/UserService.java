@@ -30,7 +30,6 @@ public class UserService {
                 passwordEncoder.encode(
                         user.getPassword())
         );
-        user.setActive(true);
 
         userDao.save(user);
     }
