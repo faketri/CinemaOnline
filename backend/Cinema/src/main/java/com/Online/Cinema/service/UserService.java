@@ -1,7 +1,9 @@
 package com.Online.Cinema.service;
 
+import com.Online.Cinema.entity.Image;
 import com.Online.Cinema.entity.User;
 import com.Online.Cinema.entity.enums.ERole;
+import com.Online.Cinema.repository.ImageDao;
 import com.Online.Cinema.repository.UserDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -24,6 +26,14 @@ public class UserService {
     }
 
     public void save(User user){
+
+        /*Image image = new Image();
+        image.setPhoto(new byte[1]);
+        image.setUser(user);
+
+        user.setAvatar(
+                image
+        );*/
 
         user.getRole().add(ERole.DEFAULT);
         user.setPassword(

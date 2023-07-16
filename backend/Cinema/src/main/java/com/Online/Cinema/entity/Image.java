@@ -20,4 +20,7 @@ public class Image {
     @ManyToOne()
     @JoinColumn(name="film_id")
     private Film film;
+    @OneToOne()
+    @JoinColumn(name="user_id")
+    private User user;
 }

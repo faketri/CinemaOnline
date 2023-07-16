@@ -6,7 +6,9 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Data
@@ -25,6 +27,12 @@ public class User{
     private String login;
     @Column(nullable = false, length = 3000)
     private String password;
+    @Column
+    private String aboutMe;
+    @Column
+    private String city;
+    @OneToOne
+    private Image avatar;
 
     @ElementCollection(targetClass = ERole.class)
     @CollectionTable(name = "user_role",

@@ -5,6 +5,7 @@ import com.Online.Cinema.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
@@ -13,9 +14,14 @@ public class UserController {
     private final UserService userService;
 
     @GetMapping(value="/user/profile/{id}")
-    public String  getUserById(@PathVariable(value = "id") Long id){
-        System.out.println(userService.findById(id).orElseThrow(() ->
-                new UsernameNotFoundException(String.format("Not founded user by id - %d", id)))
+    public String  getUserById(@PathVariable(value = "id") Long id,
+                               Model model){
+
+        model.addAttribute("user",
+                userService
+                .findById(id)
+                .orElseThrow(() ->
+                        new UsernameNotFoundException(""))
         );
 
         return "userProfile";

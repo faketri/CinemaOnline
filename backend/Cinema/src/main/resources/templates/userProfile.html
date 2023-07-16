@@ -1,16 +1,90 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--STYLE-->
+    <link rel="stylesheet" href="../../css/mainStyles.css">
+    <link rel="stylesheet" href="../../css/bootstrap.css">
+
+    <!--FONTS-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Belanosima&display=swap" rel="stylesheet">
+
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
-<body>
-<form id="logout" th:action="@{/auth/logout/}" method="post">
-    <div>
-        <button type="submit">Выйти</button>
-    </div>
-</form>
 
-<a class="btn btn-outline-primary" th:href="@{/auth/logout}">Sign out</a>
+<body>
+    <header class="header d-flex justify-content-between align-items-center position-absolute w-100 bg-secondary"
+            style="height: 90px; z-index: 1;">
+        <img class="logo" src="../../assets/logo.svg" alt="Logo" >
+        <a th:href="${user}"><img src="../../assets/ProfileButton.svg" alt="" srcset=""></a>
+        <a class="btn btn-outline-primary" th:href="@{/auth/logout}">Sign out</a>
+    </header>
+
+    <div class="row py-5 px-4">
+        <div class="col-md-5 mx-auto">
+            <!-- Profile widget -->
+            <div class="bg-grey shadow rounded overflow-hidden">
+                <div class="px-4 pt-0 pb-4 cover">
+                    <div class="media align-items-end profile-head">
+                        <div class="profile mr-3">
+                            <img th:if="${user.getAvatar() != null}" th:src="|/image/${user.getAvatar().getId()}|"
+                                alt="..." width="130" class="rounded mb-2 img-thumbnail">
+                            <a href="#" class="btn btn-outline-dark btn-sm btn-block">Edit profile</a>
+                        </div>
+                        <div class="media-body mb-5 text-white">
+                            <h4 class="mt-0 mb-0" th:text="${user.getLogin()}"></h4>
+                            <p class="small mb-4">
+                                <i class="fas fa-map-marker-alt mr-2"></i><p th:utext="${user.getCity()}"></p>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-light p-4 d-flex justify-content-end text-center">
+                    <ul class="list-inline mb-0">
+                        <li class="list-inline-item">
+                            <h5 class="font-weight-bold mb-0 d-block">215</h5>
+                            <small class="text-muted"> <i class="fas fa-image mr-1"></i>Photos</small>
+                        </li>
+                        <li class="list-inline-item">
+                            <h5 class="font-weight-bold mb-0 d-block">745</h5>
+                            <small class="text-muted"> <i class="fas fa-user mr-1"></i>Followers</small>
+                        </li>
+                        <li class="list-inline-item">
+                            <h5 class="font-weight-bold mb-0 d-block">340</h5>
+                            <small class="text-muted"> <i class="fas fa-user mr-1"></i>Following</small>
+                        </li>
+                    </ul>
+                </div>
+                <div class="px-4 py-3">
+                    <h5 class="mb-0">About</h5>
+                    <div class="p-4 rounded shadow-sm bg-light">
+                        <p class="font-italic mb-0" th:utext="${user.getAboutMe()}">Web Developer</p>
+                    </div>
+                </div>
+                <div class="py-4 px-4">
+                    <div class="d-flex align-items-center justify-content-between mb-3">
+                        <h5 class="mb-0">Liked films</h5>
+                        <a href="#" class="btn btn-link text-muted">Show all</a>
+                    </div>
+                    <div class="row">
+                        <div th:if="${user.getFilms() != null}" th:each="likedFilms : ${user.getFilms()}" class="col-lg-6 mb-2 pr-lg-1">
+                            <img th:src="|/image/likedFilms/0|"
+                                alt="" class="img-fluid rounded shadow-sm">
+                        </div>
+                        <div th:unless="${user.getFilms() != null}">
+                            <p class="text-center">DON'T HAVE LIKED FILMS</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
+
 </html>
